@@ -1,4 +1,4 @@
-import Tour from "../assets/images/tour.png";
+import logo from "../assets/images/movie.png";
 
 function Navbar() {
   return (
@@ -10,9 +10,9 @@ function Navbar() {
               href="https://flowbite.com/"
               className="flex items-center space-x-3 rtl:space-x-reverse"
             >
-              <img src={Tour} className="h-8" alt="Flowbite Logo" />
+              <img src={logo} className="h-8" alt="Flowbite Logo" />
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                Awesome Tours
+                Awesome MoviesDB
               </span>
             </a>
             <button

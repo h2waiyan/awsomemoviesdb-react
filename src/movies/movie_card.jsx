@@ -28,7 +28,7 @@ export const MovieCard = ({ category, title }) => {
 
   return (
     <>
-      <h1 className="text-5xl text-start mx-2 my-5">{title}</h1>
+      <h1 className="text-3xl text-start mx-2 my-5">{title}</h1>
       {movies.length == 0 ? (
         <h1>Loading...</h1>
       ) : (
