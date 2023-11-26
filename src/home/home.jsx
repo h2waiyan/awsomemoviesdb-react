@@ -1,6 +1,5 @@
 import background from "../assets/images/background.jpg";
 import back from "../assets/images/back.webp";
-
 import "./home.css";
 import { Movies } from "../movies/movies";
 import { useState } from "react";
