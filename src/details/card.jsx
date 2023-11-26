@@ -1,15 +1,19 @@
-export const Cast = (props) => {
-  console.log(props.casts["name"]);
+import userpic from "../assets/images/user.png";
+
+export const Cast = ({ casts }) => {
   return (
-    <div className="">
+    <div className="flex-shrink-0 p-5">
       <img
-        className="flex-shrink-0 m-3 h-24 w-24 rounded-full object-fit"
-        src={`https://image.tmdb.org/t/p/original${props.casts["profile_path"]}`}
+        className="w-40 h-40 rounded-full object-cover"
+        src={
+          casts["profile_path"] == undefined || null
+            ? userpic
+            : `https://image.tmdb.org/t/p/original${casts["profile_path"]}`
+        }
         alt=""
       />
-
-      <h1>{props.casts["name"]}</h1>
-      <h1>{props.casts["character"]}</h1>
+      <h1 className="pt-5 font-bold">{casts["name"]}</h1>
+      <h1>{casts["character"]}</h1>
     </div>
   );
 };

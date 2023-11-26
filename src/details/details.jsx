@@ -2,35 +2,34 @@ import React from "react";
 import axios from "axios";
 import Constant from "../constant";
 import { Cast } from "./card.jsx";
+import { useParams } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 export const DetailsPage = () => {
   const [details, setDetails] = useState({});
   const [casts, setCasts] = useState([]);
 
+  const params = useParams();
+
   useEffect(() => {
     axios
       .get(
-        `${Constant.API_URL}/movie/278/credits?api_key=${Constant.API_KEY}&language=en-US&page=1`
+        `${Constant.API_URL}/movie/${params["id"]}/credits?api_key=${Constant.API_KEY}&language=en-US&page=1`
       )
       .then(function (response) {
-        console.log(response.data);
         // handle success
         setCasts(response.data["cast"]);
       })
       .catch(function (error) {
         // handle error
         console.log(error);
-      })
-      .finally(function () {
-        // always executed
       });
   }, []);
 
   useEffect(() => {
     axios
       .get(
-        `${Constant.API_URL}/movie/278?api_key=${Constant.API_KEY}&language=en-US&page=1`
+        `${Constant.API_URL}/movie/${params["id"]}?api_key=${Constant.API_KEY}&language=en-US&page=1`
       )
       .then(function (response) {
         console.log(response.data);
@@ -59,10 +58,12 @@ export const DetailsPage = () => {
         </p>
       </div>
 
+      <h1 className="text-3xl mt-5 ml-5">Casts</h1>
+
       {casts == [] ? (
         <h1>Loading...</h1>
       ) : (
-        <div className="flex flex-nowrap overflow-x-scroll scrollbar-hide">
+        <div className="flex-shrink-0 flex overflow-x-scroll scrollbar-hide">
           {casts.map((cast) => {
             return <Cast key={cast.id} casts={cast}></Cast>;
           })}
